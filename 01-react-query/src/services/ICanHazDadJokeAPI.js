@@ -7,6 +7,8 @@ export const getRandomDadJoke = async () => {
 		},
 	})
 
+	await new Promise(r => setTimeout(r, 3000))
+
 	return response.data
 }
 

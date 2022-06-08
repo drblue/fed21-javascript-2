@@ -1,3 +1,4 @@
+import { ReactQueryDevtools } from 'react-query/devtools'
 import { Routes, Route } from 'react-router-dom'
 import Navigation from './components/Navigation'
 import HomePage from './pages/HomePage'
@@ -15,6 +16,8 @@ const App = () => {
 				<Route path="/random-dad-joke" element={<RandomDadJokePage />} />
 				<Route path="*" element={<PageNotFound />} />
 			</Routes>
+
+			<ReactQueryDevtools position='bottom-right' />
 		</div>
 	)
 }
