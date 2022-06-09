@@ -3,7 +3,7 @@ import { useQuery } from 'react-query'
 import { getRandomJoke } from '../services/DadJokesAPI'
 
 const RandomDadJokePage = () => {
-	const { isLoading, isError, error, data } = useQuery('random-dad-joke', getRandomJoke)
+	const { isLoading, isError, error, data } = useQuery('random-joke', getRandomJoke)
 
 	return (
 		<Container className="py-3">

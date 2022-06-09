@@ -14,6 +14,12 @@ export const getRandomJoke = async () => {
 	return response.data
 }
 
+export const getJokeByType = async (type) => {
+	const response = await axios.get(`/joke/type/${type}`, requestOptions)
+	return response.data
+}
+
 export default {
-	getRandomJoke
+	getRandomJoke,
+	getJokeByType,
 }
