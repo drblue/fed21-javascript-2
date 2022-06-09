@@ -6,9 +6,7 @@ import { getJokeByType } from '../services/DadJokesAPI'
 
 const JokePage = () => {
 	const { type } = useParams()
-	const { isLoading, isError, error, data } = useQuery(['joke', type], () => {
-		return getJokeByType(type)
-	})
+	const { isLoading, isError, error, data } = useQuery(['joke', type], getJokeByType)
 
 	if (!type) {
 		return (

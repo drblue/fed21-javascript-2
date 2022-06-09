@@ -14,7 +14,9 @@ export const getRandomJoke = async () => {
 	return response.data
 }
 
-export const getJokeByType = async (type) => {
+export const getJokeByType = async ({ queryKey }) => {
+	const [_key, type] = queryKey
+
 	const response = await axios.get(`/joke/type/${type}`, requestOptions)
 	return response.data
 }
