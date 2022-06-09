@@ -2,8 +2,8 @@ import Container from 'react-bootstrap/Container'
 import { useQuery } from 'react-query'
 import { getRandomDadJoke } from '../services/ICanHazDadJokeAPI'
 
-const RandomDadJokePage = () => {
-	const { isLoading, isError, error, data } = useQuery('random-dad-joke', getRandomDadJoke)
+const ICanHazDadJokePage = () => {
+	const { isLoading, isError, error, data } = useQuery('i-can-haz-dad-joke', getRandomDadJoke)
 
 	return (
 		<Container className="py-3">
@@ -23,4 +23,4 @@ const RandomDadJokePage = () => {
 	)
 }
 
-export default RandomDadJokePage
+export default ICanHazDadJokePage
