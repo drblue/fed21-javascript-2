@@ -1,4 +1,4 @@
-import Spinner from 'react-bootstrap/Spinner'
+import BounceLoader from 'react-spinners/BounceLoader'
 import { useIsFetching } from 'react-query'
 
 const GlobalFetchingSpinner = () => {
@@ -6,7 +6,7 @@ const GlobalFetchingSpinner = () => {
 
 	return isFetching ? (
 		<div id="fetching-spinner">
-			<Spinner animation="grow" />
+			<BounceLoader size={40} color="#36D7B7" />
 		</div>
 	) : null
 }
