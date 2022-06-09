@@ -1,12 +1,20 @@
+import { useEffect, useState } from 'react'
 import Alert from 'react-bootstrap/Alert'
+import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
 import { useParams } from 'react-router-dom'
 import { useQuery } from 'react-query'
 import { getJokeByType } from '../services/DadJokesAPI'
 
 const JokePage = () => {
+	const [joke, setJoke] = useState()
 	const { type } = useParams()
 	const { isLoading, isError, error, data } = useQuery(['joke', type], getJokeByType)
+
+	const getRandomJoke = () => {
+		const randomJokeIndex = Math.floor(Math.random() * data.body.length)
+		setJoke(data.body[randomJokeIndex])
+	}
 
 	if (!type) {
 		return (
@@ -16,21 +24,33 @@ const JokePage = () => {
 		)
 	}
 
+	useEffect(() => {
+		if (!data) {
+			return
+		}
+
+		getRandomJoke()
+	}, [data])
+
 	return (
 		<Container className="py-3">
 
-			<h1>Random General Joke</h1>
+			<h1>Random {type} joke</h1>
 
 			{isLoading && (<p>Loading joke...</p>)}
 
 			{isError && (<p>An error occurred: {error.message}</p>)}
 
-			{data && data.body.map(joke => (
-				<div key={joke._id} className="text-center my-5">
+			{joke && (
+				<div className="text-center my-5">
 					<p className="h3">{joke.setup}</p>
 					<p className="h4">{joke.punchline}</p>
 				</div>
-			))}
+			)}
+
+			<div className="d-flex justify-content-center">
+				<Button variant="primary" onClick={getRandomJoke}>MOAR 🤣!!</Button>
+			</div>
 		</Container>
 	)
 }
