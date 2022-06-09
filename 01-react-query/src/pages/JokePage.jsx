@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
 import { useParams } from 'react-router-dom'
 import { useQuery } from 'react-query'
+import JokeWithPunchline from '../components/JokeWithPunchline'
 import { getJokeByType } from '../services/DadJokesAPI'
 
 const JokePage = () => {
@@ -42,10 +43,7 @@ const JokePage = () => {
 			{isError && (<p>An error occurred: {error.message}</p>)}
 
 			{joke && (
-				<div className="text-center my-5">
-					<p className="h3">{joke.setup}</p>
-					<p className="h4">{joke.punchline}</p>
-				</div>
+				<JokeWithPunchline joke={joke} />
 			)}
 
 			<div className="d-flex justify-content-center">

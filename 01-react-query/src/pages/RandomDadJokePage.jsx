@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
 import { useQuery } from 'react-query'
+import JokeWithPunchline from '../components/JokeWithPunchline'
 import { getRandomJoke } from '../services/DadJokesAPI'
 
 const buttonTexts = [
@@ -33,10 +34,7 @@ const RandomDadJokePage = () => {
 			{isError && (<p>An error occurred: {error.message}</p>)}
 
 			{data && data.body.map(joke => (
-				<div key={joke._id} className="text-center my-5">
-					<p className="h3">{joke.setup}</p>
-					<p className="h4">{joke.punchline}</p>
-				</div>
+				<JokeWithPunchline key={joke._id} joke={joke} />
 			))}
 
 			<div className="d-flex justify-content-center">
