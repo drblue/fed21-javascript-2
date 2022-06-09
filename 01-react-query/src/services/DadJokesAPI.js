@@ -2,6 +2,8 @@ import axios from 'axios'
 
 axios.defaults.baseURL = 'https://dad-jokes.p.rapidapi.com'
 
+const fakeDelay = 3500
+
 const requestOptions = {
 	headers: {
 		'X-RapidAPI-Key': import.meta.env.VITE_DAD_JOKES_API_KEY,
@@ -11,6 +13,9 @@ const requestOptions = {
 
 export const getRandomJoke = async () => {
 	const response = await axios.get('/random/joke', requestOptions)
+
+	fakeDelay && await new Promise(r => setTimeout(r, fakeDelay))
+
 	return response.data
 }
 
