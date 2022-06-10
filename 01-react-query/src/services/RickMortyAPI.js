@@ -7,8 +7,10 @@ const get = async (endpoint) => {
 	return response.data
 }
 
-export const getCharacters = () => {
-	return get(`/character`)
+export const getCharacters = ({ queryKey }) => {
+	const [_key, page] = queryKey
+
+	return get(`/character?page=${page}`)
 }
 
 export default {
