@@ -15,6 +15,10 @@ const Navigation = () => {
 					<Nav className="ms-auto">
 						<Nav.Link as={NavLink} to="/random-dog">Dog</Nav.Link>
 
+						<NavDropdown title="Rick & Morty" id="basic-nav-dropdown">
+							<NavDropdown.Item as={NavLink} to="/rick-morty/characters">Characters</NavDropdown.Item>
+						</NavDropdown>
+
 						<NavDropdown title="Jokes" id="basic-nav-dropdown">
 							<NavDropdown.Item as={NavLink} to="/i-can-haz-dad-joke">I Can Haz Dad Joke?</NavDropdown.Item>
 							<NavDropdown.Item as={NavLink} to="/random-dad-joke">Random Dad Joke</NavDropdown.Item>

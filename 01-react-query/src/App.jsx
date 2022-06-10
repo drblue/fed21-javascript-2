@@ -2,6 +2,7 @@ import { ReactQueryDevtools } from 'react-query/devtools'
 import { Routes, Route } from 'react-router-dom'
 import GlobalFetchingSpinner from './components/GlobalFetchingSpinner'
 import Navigation from './components/Navigation'
+import RickMortyCharactersPage from './pages/rick-morty/CharactersPage'
 import HomePage from './pages/HomePage'
 import PageNotFound from './pages/PageNotFound'
 import ICanHazDadJokePage from './pages/ICanHazDadJokePage'
@@ -18,6 +19,9 @@ const App = () => {
 
 			<Routes>
 				<Route path="/" element={<HomePage />} />
+
+				<Route path="/rick-morty/characters" element={<RickMortyCharactersPage />} />
+
 				<Route path="/i-can-haz-dad-joke" element={<ICanHazDadJokePage />} />
 				<Route path="/random-dad-joke" element={<RandomDadJokePage />} />
 				<Route path="/random-dog" element={<RandomDogPage />} />
