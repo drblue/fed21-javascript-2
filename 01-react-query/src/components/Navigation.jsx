@@ -13,11 +13,14 @@ const Navigation = () => {
 				<Navbar.Toggle aria-controls="basic-navbar-nav" />
 				<Navbar.Collapse id="basic-navbar-nav">
 					<Nav className="ms-auto">
-						<Nav.Link as={NavLink} to="/i-can-haz-dad-joke">I Can Haz Dad Joke?</Nav.Link>
-						<Nav.Link as={NavLink} to="/random-dad-joke">Dad Joke</Nav.Link>
 						<Nav.Link as={NavLink} to="/random-dog">Dog</Nav.Link>
 
-						<NavDropdown title="Joke by Type" id="basic-nav-dropdown">
+						<NavDropdown title="Jokes" id="basic-nav-dropdown">
+							<NavDropdown.Item as={NavLink} to="/i-can-haz-dad-joke">I Can Haz Dad Joke?</NavDropdown.Item>
+							<NavDropdown.Item as={NavLink} to="/random-dad-joke">Random Dad Joke</NavDropdown.Item>
+
+							<NavDropdown.Divider />
+
 							<NavDropdown.Item as={NavLink} to="/joke/general">General</NavDropdown.Item>
 							<NavDropdown.Item as={NavLink} to="/joke/knock-knock">Knock-knock</NavDropdown.Item>
 							<NavDropdown.Item as={NavLink} to="/joke/programming">Programming</NavDropdown.Item>
