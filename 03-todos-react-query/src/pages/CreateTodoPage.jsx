@@ -11,6 +11,7 @@ const CreateTodoPage = () => {
 
 	// Create a new todo in the api
 	const createTodo = async (newTodo) => {
+		/*
 		const res = await TodosAPI.createTodo(newTodo)
 
 		setTimeout(() => {
@@ -22,6 +23,7 @@ const CreateTodoPage = () => {
 		} else {
 			setSuccess(false)
 		}
+		*/
 	}
 
 	return (
