@@ -1,0 +1,8 @@
+@import 'bootstrap/scss/bootstrap';
+
+#fetching-spinner {
+	position: absolute;
+	top: 75px;
+	right: 50px;
+	z-index: 1; // does not kill a 🐰 as we actually know what we are doing here 😎
+}
