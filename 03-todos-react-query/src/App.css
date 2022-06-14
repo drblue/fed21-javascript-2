@@ -1,0 +1,13 @@
+h1, h2, h3, h4, h5, h6 {
+	margin-bottom: 0.75em;
+}
+
+.todolist .done {
+	font-style: italic;
+	color: var(--bs-success);
+	text-decoration: line-through;
+}
+
+.status {
+	font-style: italic;
+}
