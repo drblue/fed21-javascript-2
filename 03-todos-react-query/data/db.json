@@ -2,7 +2,7 @@
   "todos": [
     {
       "title": "Learn React Router",
-      "completed": false,
+      "completed": true,
       "id": 2
     },
     {
