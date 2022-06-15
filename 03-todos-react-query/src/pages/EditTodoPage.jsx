@@ -8,9 +8,21 @@ import TodosAPI from '../services/TodosAPI'
 const EditTodoPage = () => {
 	const { id } = useParams()
 	const navigate = useNavigate()
-	const { data, error, isError, isLoading } = useQuery(['todo', { id }], () => TodosAPI.getTodo(id))
-	const deleteTodoMutation = useMutation(TodosAPI.deleteTodo)
 	const queryClient = useQueryClient()
+
+	const { data, error, isError, isLoading } = useQuery(['todo', { id }], () => TodosAPI.getTodo(id))
+
+	const deleteTodoMutation = useMutation(TodosAPI.deleteTodo)
+
+	const updateTodoMutation = useMutation((newTodoData) => TodosAPI.updateTodo(id, newTodoData), {
+		onSuccess: (newData) => {
+			// set new todo data in query-cache
+			queryClient.setQueryData(['todo', { id }], newData)
+
+			// invalidate todos list query
+			queryClient.invalidateQueries('todos')
+		}
+	})
 
 	const handleDelete = async () => {
 		// send request to API to delete the todo
@@ -19,7 +31,7 @@ const EditTodoPage = () => {
 		// invalidate todos list query
 		queryClient.invalidateQueries('todos')
 
-		// invalidate todo query for this todo
+		// delete todo query for this todo
 		queryClient.removeQueries(['todo', { id }])
 
 		// navigate user to `/todos`
@@ -27,15 +39,11 @@ const EditTodoPage = () => {
 	}
 
 	const handleSubmit = async (data) => {
-		/*
 		// send request to API to update title for this todo with the value in the input field
-		await TodosAPI.updateTodo(id, {
-			title: newTitle,
-		})
+		await updateTodoMutation.mutateAsync(data)
 
 		// redirect user to /todos/:id
 		navigate(`/todos/${id}`)
-		*/
 	}
 
 	return (
