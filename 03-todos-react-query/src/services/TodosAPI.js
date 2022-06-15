@@ -6,7 +6,7 @@ import axios from 'axios'
 
 axios.defaults.baseURL = 'http://localhost:3001'
 
-const FAKE_DELAY = 1500
+// const FAKE_DELAY = 1500
 
 /**
  * GET an endpoint
@@ -17,7 +17,7 @@ const FAKE_DELAY = 1500
 const get = async (endpoint) => {
 	const res = await axios.get(endpoint)
 
-	FAKE_DELAY && await new Promise(r => setTimeout(r, FAKE_DELAY))
+	// FAKE_DELAY && await new Promise(r => setTimeout(r, FAKE_DELAY))
 
 	return res.data
 }
