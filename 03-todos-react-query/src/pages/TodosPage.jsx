@@ -10,14 +10,18 @@ const TodosPage = () => {
 
 	const { data, error, isError, isLoading } = useQuery('todos', TodosAPI.getTodos)
 
-	const createTodoMutation = useMutation(TodosAPI.createTodo)
+	const createTodoMutation = useMutation(TodosAPI.createTodo, {
+		onSuccess: (newData) => {
+			queryClient.setQueryData('todos', [
+				...data,
+				newData,
+			])
+		}
+	})
 
 	const handleCreateTodoFormSubmit = async (newTodo) => {
 		// create new todo in API
 		await createTodoMutation.mutateAsync(newTodo)
-
-		// invalidate list of todos
-		queryClient.invalidateQueries('todos')
 	}
 
 	return (
