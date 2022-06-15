@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 
-const EditTodoForm = ({ todo, onSubmit, onDelete }) => {
+const EditTodoForm = ({ todo, onSubmit, onDelete, disabled }) => {
 	const [newTitle, setNewTitle] = useState(todo.title)
 
 	const handleSubmit = (e) => {
@@ -32,12 +32,13 @@ const EditTodoForm = ({ todo, onSubmit, onDelete }) => {
 					required
 					type="text"
 					value={newTitle}
+					disabled={disabled}
 				/>
 			</Form.Group>
 
 			<div className="d-flex justify-content-between">
-				<Button variant="success" type="submit" disabled={!newTitle.length}>Save</Button>
-				<Button variant="danger" onClick={handleDelete}>Delete</Button>
+				<Button variant="success" type="submit" disabled={!newTitle.length || disabled}>Save</Button>
+				<Button variant="danger" onClick={handleDelete} disabled={disabled}>Delete</Button>
 			</div>
 		</Form>
 	)

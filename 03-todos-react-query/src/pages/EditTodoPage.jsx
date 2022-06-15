@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query'
+import { useQuery, useMutation, useQueryClient } from 'react-query'
 import { useNavigate, useParams } from 'react-router-dom'
 import WarningAlert from '../components/alerts/WarningAlert'
 import EditTodoForm from '../components/EditTodoForm'
@@ -9,15 +9,21 @@ const EditTodoPage = () => {
 	const { id } = useParams()
 	const navigate = useNavigate()
 	const { data, error, isError, isLoading } = useQuery(['todo', { id }], () => TodosAPI.getTodo(id))
+	const deleteTodoMutation = useMutation(TodosAPI.deleteTodo)
+	const queryClient = useQueryClient()
 
 	const handleDelete = async () => {
-		/*
 		// send request to API to delete the todo
-		await TodosAPI.deleteTodo(id)
+		await deleteTodoMutation.mutateAsync(id)
+
+		// invalidate todos list query
+		queryClient.invalidateQueries('todos')
+
+		// invalidate todo query for this todo
+		queryClient.removeQueries(['todo', { id }])
 
 		// navigate user to `/todos`
 		navigate('/todos')
-		*/
 	}
 
 	const handleSubmit = async (data) => {
@@ -42,7 +48,7 @@ const EditTodoPage = () => {
 				<>
 					<h1>Edit: {data.title}</h1>
 
-					<EditTodoForm todo={data} onDelete={handleDelete} onSubmit={handleSubmit} />
+					<EditTodoForm todo={data} onDelete={handleDelete} onSubmit={handleSubmit} disabled={deleteTodoMutation.isLoading} />
 				</>
 			)}
 		</div>
