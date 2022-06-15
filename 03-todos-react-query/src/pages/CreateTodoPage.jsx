@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Alert from 'react-bootstrap/Alert'
 import Button from 'react-bootstrap/Button'
 import { useNavigate } from 'react-router-dom'
-import AddNewTodoForm from "../components/AddNewTodoForm"
+import CreateTodoForm from '../components/CreateTodoForm'
 import TodosAPI from "../services/TodosAPI"
 
 const CreateTodoPage = () => {
@@ -30,8 +30,8 @@ const CreateTodoPage = () => {
 		<>
 			<h1>Create New Todo</h1>
 
-			<AddNewTodoForm
-				onAddNewTodo={createTodo}
+			<CreateTodoForm
+				onSubmit={createTodo}
 			/>
 
 			{success === true && (
