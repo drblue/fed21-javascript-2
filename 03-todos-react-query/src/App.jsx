@@ -8,7 +8,6 @@ import HomePage from './pages/HomePage'
 import NotFound from './pages/NotFound'
 import TodosPage from './pages/TodosPage'
 import TodoPage from './pages/TodoPage'
-import 'bootstrap/dist/css/bootstrap.css'
 import './assets/scss/App.scss'
 
 const App = () => {
