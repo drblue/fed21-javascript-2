@@ -24,7 +24,7 @@ const TodosPage = () => {
 		<>
 			<h1>Todos</h1>
 
-			<CreateTodoForm onSubmit={handleCreateTodoFormSubmit} />
+			<CreateTodoForm onSubmit={handleCreateTodoFormSubmit} disabled={createTodoMutation.isLoading} />
 
 			<hr className="my-5" />
 
