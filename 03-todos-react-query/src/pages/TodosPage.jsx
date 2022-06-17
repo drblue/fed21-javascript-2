@@ -1,6 +1,6 @@
 import { useQuery, useMutation, useQueryClient } from 'react-query'
 import WarningAlert from '../components/alerts/WarningAlert'
-import CreateTodoForm from '../components/CreateTodoForm'
+import TodoForm from '../components/TodoForm'
 import LoadingSpinner from '../components/LoadingSpinner'
 import TodoList from '../components/TodoList'
 import TodosAPI from '../services/TodosAPI'
@@ -28,7 +28,7 @@ const TodosPage = () => {
 		<>
 			<h1>Todos</h1>
 
-			<CreateTodoForm onSubmit={handleCreateTodoFormSubmit} isSubmitting={createTodoMutation.isLoading} />
+			<TodoForm onSubmit={handleCreateTodoFormSubmit} isSubmitting={createTodoMutation.isLoading} />
 
 			<hr className="my-5" />
 

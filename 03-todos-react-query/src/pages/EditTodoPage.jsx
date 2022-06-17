@@ -1,7 +1,7 @@
 import { useQuery, useMutation, useQueryClient } from 'react-query'
 import { useNavigate, useParams } from 'react-router-dom'
 import WarningAlert from '../components/alerts/WarningAlert'
-import EditTodoForm from '../components/EditTodoForm'
+import TodoForm from '../components/TodoForm'
 import LoadingSpinner from '../components/LoadingSpinner'
 import TodosAPI from '../services/TodosAPI'
 
@@ -56,7 +56,7 @@ const EditTodoPage = () => {
 				<>
 					<h1>Edit: {data.title}</h1>
 
-					<EditTodoForm todo={data} onDelete={handleDelete} onSubmit={handleSubmit} disabled={deleteTodoMutation.isLoading} />
+					<TodoForm initialValues={data} onDelete={handleDelete} onSubmit={handleSubmit} isMutating={deleteTodoMutation.isLoading} />
 				</>
 			)}
 		</div>
