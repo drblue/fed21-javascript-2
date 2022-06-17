@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
-import { useIsMutating } from 'react-query'
 import BeatLoader from 'react-spinners/BeatLoader'
 
 const CreateTodoForm = ({ onSubmit, isSubmitting = false }) => {
@@ -9,7 +8,6 @@ const CreateTodoForm = ({ onSubmit, isSubmitting = false }) => {
 	const [newTitle, setNewTitle] = useState('')
 	// input reference
 	const newTitleRef = useRef()
-	const isMutating = useIsMutating()
 
 	const handleSubmit = e => {
 		// stop form from submitting
