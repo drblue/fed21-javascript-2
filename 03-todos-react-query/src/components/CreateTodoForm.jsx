@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
+import { useIsMutating } from 'react-query'
 import BeatLoader from 'react-spinners/BeatLoader'
 
 const CreateTodoForm = ({ onSubmit, isSubmitting = false }) => {
@@ -8,6 +9,7 @@ const CreateTodoForm = ({ onSubmit, isSubmitting = false }) => {
 	const [newTitle, setNewTitle] = useState('')
 	// input reference
 	const newTitleRef = useRef()
+	const isMutating = useIsMutating()
 
 	const handleSubmit = e => {
 		// stop form from submitting
@@ -43,7 +45,7 @@ const CreateTodoForm = ({ onSubmit, isSubmitting = false }) => {
 
 			<div className="d-flex justify-content-between">
 				<Button variant="success" type="submit" disabled={!newTitle.length || isSubmitting}>
-					{true ? (
+					{isSubmitting ? (
 							<>
 								<BeatLoader size={8} color="#fff" />
 								<span className="ps-2">Saving...</span>
