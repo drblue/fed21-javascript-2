@@ -19,6 +19,66 @@
       "title": "Drink water?",
       "completed": false,
       "id": 12
+    },
+    {
+      "title": "Lägg in vår GlobalFetchingSpinner",
+      "completed": false,
+      "id": 13
+    },
+    {
+      "title": "Styla vår GlobalFetchingSpinner",
+      "completed": false,
+      "id": 14
+    },
+    {
+      "title": "Testar igen",
+      "completed": false,
+      "id": 15
+    },
+    {
+      "title": "Test 123",
+      "completed": false,
+      "id": 16
+    },
+    {
+      "title": "Testing our new button mutation state",
+      "completed": false,
+      "id": 17
+    },
+    {
+      "title": "Testing animations",
+      "completed": false,
+      "id": 18
+    },
+    {
+      "title": "We're the next Pixar",
+      "completed": false,
+      "id": 19
+    },
+    {
+      "title": "Testing igen",
+      "completed": false,
+      "id": 20
+    },
+    {
+      "title": "Animations everywhere!",
+      "completed": false,
+      "id": 21
+    },
+    {
+      "title": "This is my newest title (FINAL)",
+      "completed": false,
+      "id": 22
+    },
+    {
+      "title": "My newest todo",
+      "completed": false,
+      "id": 23
+    },
+    {
+      "title": "MY VERY FINAL TITLE (I PROMISE)",
+      "completed": false,
+      "id": 24
     }
   ]
 }

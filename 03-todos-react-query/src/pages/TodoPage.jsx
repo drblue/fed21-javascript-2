@@ -2,6 +2,7 @@ import Button from 'react-bootstrap/Button'
 import { useQuery, useMutation, useQueryClient } from 'react-query'
 import { Link, useParams } from 'react-router-dom'
 import WarningAlert from '../components/alerts/WarningAlert'
+import PageTransition from '../components/animations/PageTransition'
 import LoadingSpinner from '../components/LoadingSpinner'
 import TodosAPI from '../services/TodosAPI'
 
@@ -25,7 +26,7 @@ const TodoPage = () => {
 	}
 
 	return (
-		<div>
+		<PageTransition>
 			{isLoading && <LoadingSpinner />}
 
 			{isError && <WarningAlert error={error.message} />}
@@ -40,7 +41,7 @@ const TodoPage = () => {
 					<Button variant="warning" as={Link} to={`/todos/${id}/edit`}>Edit</Button>
 				</>
 			)}
-		</div>
+		</PageTransition>
 	)
 }
 
