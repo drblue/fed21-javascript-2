@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
+import BeatLoader from 'react-spinners/BeatLoader'
 
-const CreateTodoForm = ({ onSubmit, disabled = false }) => {
+const CreateTodoForm = ({ onSubmit, isSubmitting = false }) => {
 	// input state
 	const [newTitle, setNewTitle] = useState('')
 	// input reference
@@ -36,12 +37,22 @@ const CreateTodoForm = ({ onSubmit, disabled = false }) => {
 					ref={newTitleRef}
 					type="text"
 					value={newTitle}
-					disabled={disabled}
+					disabled={isSubmitting}
 				/>
 			</Form.Group>
 
 			<div className="d-flex justify-content-between">
-				<Button variant="success" type="submit" disabled={!newTitle.length || disabled}>Save</Button>
+				<Button variant="success" type="submit" disabled={!newTitle.length || isSubmitting}>
+					{true ? (
+							<>
+								<BeatLoader size={8} color="#fff" />
+								<span className="ps-2">Saving...</span>
+							</>
+						) : (
+							<span>Save</span>
+						)
+					}
+				</Button>
 			</div>
 		</form>
 	)

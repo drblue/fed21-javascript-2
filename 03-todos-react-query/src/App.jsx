@@ -1,6 +1,7 @@
 import Container from 'react-bootstrap/Container'
 import { ReactQueryDevtools } from 'react-query/devtools'
 import { Routes, Route } from 'react-router-dom'
+import GlobalFetchingSpinner from './components/GlobalFetchingSpinner'
 import Navigation from './components/Navigation'
 import EditTodoPage from './pages/EditTodoPage'
 import HomePage from './pages/HomePage'
@@ -14,6 +15,7 @@ const App = () => {
 	return (
 		<div id="App">
 			<Navigation />
+			<GlobalFetchingSpinner />
 
 			<Container className="py-3">
 				<Routes>
