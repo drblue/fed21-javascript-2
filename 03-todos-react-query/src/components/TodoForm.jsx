@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useState } from 'react'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import BeatLoader from 'react-spinners/BeatLoader'
@@ -15,25 +15,21 @@ const TodoForm = ({
 	// todo
 	const [todo, setTodo] = useState(initialValues)
 
-	// input state
-	const [newTitle, setNewTitle] = useState(initialValues.title)
-
-	// input reference
-	const newTitleRef = useRef()
+	const handleInputChange = (e) => {
+		setTodo(previousData => {
+			return {
+				...previousData,
+				[e.target.id]: e.target.value,
+			}
+		})
+	}
 
 	const handleSubmit = e => {
 		// stop form from submitting
 		e.preventDefault()
 
 		// push a new todo to the todos state
-		const newTodo = {
-			...todo,
-			title: newTitle,
-		}
-		onSubmit(newTodo)
-
-		// clear newTitle state
-		setNewTitle('')
+		onSubmit(todo)
 	}
 
 	const handleDelete = () => {
@@ -44,28 +40,22 @@ const TodoForm = ({
 		onDelete()
 	}
 
-	// focus on input field when component is mounted
-	useEffect(() => {
-		newTitleRef.current.focus()
-	}, [])
-
 	return (
 		<form onSubmit={handleSubmit}>
-			<Form.Group className="mb-3" controlId="newTitle">
+			<Form.Group className="mb-3" controlId="title">
 				<Form.Label>Title</Form.Label>
 				<Form.Control
-					onChange={e => setNewTitle(e.target.value)}
+					onChange={handleInputChange}
 					placeholder="Enter title"
 					required
-					ref={newTitleRef}
 					type="text"
-					value={newTitle}
+					value={todo.title}
 					disabled={isSubmitting}
 				/>
 			</Form.Group>
 
 			<div className="d-flex justify-content-between">
-				<Button variant="success" type="submit" disabled={!newTitle.length || isSubmitting}>
+				<Button variant="success" type="submit" disabled={!todo.title.length || isSubmitting}>
 					{isSubmitting ? (
 							<>
 								<BeatLoader size={8} color="#fff" />
