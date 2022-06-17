@@ -1,8 +1,12 @@
 import { motion } from 'framer-motion'
 
+const transition = {
+	// duration: 2,
+}
+
 const fadeIn = {
 	initial: { opacity: 0 },
-	enter: { opacity: 1 },
+	enter: { opacity: 1, transition },
 	exit: { opacity: 0 },
 }
 
